@@ -1065,6 +1065,19 @@ bool cPluginManager::CallHookProjectileHitEntity(cProjectileEntity & a_Projectil
 
 
 
+bool cPluginManager::CallHookRedstoneOnBlock(cWorld & a_World, int a_BlockX, int a_BlockY, int a_BlockZ, BLOCKTYPE a_BlockType, NIBBLETYPE a_BlockMeta, PoweringData PowerData)
+{
+	return GenericCallHook(HOOK_REDSTONE_AT_BLOCK, [&](cPlugin * a_Plugin)
+		{
+			return a_Plugin->OnRedstoneToBlockAt(cWorld & a_World, int a_BlockX, int a_BlockY, int a_BlockZ, BLOCKTYPE a_BlockType, NIBBLETYPE a_BlockMeta, PoweringData PowerData);)
+		}
+	);
+}
+
+
+
+
+
 bool cPluginManager::CallHookServerPing(cClientHandle & a_ClientHandle, AString & a_ServerDescription, int & a_OnlinePlayersCount, int & a_MaxPlayersCount, AString & a_Favicon)
 {
 	return GenericCallHook(HOOK_SERVER_PING, [&](cPlugin * a_Plugin)

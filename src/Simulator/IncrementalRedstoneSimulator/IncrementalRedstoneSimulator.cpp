@@ -4,6 +4,7 @@
 
 #include "IncrementalRedstoneSimulator.h"
 #include "../../Chunk.h"
+#include "../../Bindings/PluginManager.h"
 
 #include "CommandBlockHandler.h"
 #include "DoorHandler.h"
@@ -185,9 +186,13 @@ void cIncrementalRedstoneSimulator::Simulate(float a_dt)
 			Power = std::max(Power, PotentialPower);
 		}
 
-		// Inform the handler to update
-		cVector3iArray Updates = CurrentHandler->Update(m_World, CurrentLocation, CurrentBlock, CurrentMeta, Power);
-		WorkQueue.insert(WorkQueue.end(), Updates.begin(), Updates.end());
+		// Does every plugin agree with the block recieving the signal?
+		if (cPluginManager::Get()->CallHookRedstoneOnBlock(m_World, CurrentLocation.x, CurrentLocation.y, CurrentLocation.z, CurrentBlock, CurrentMeta, Power)
+		{
+			// Inform the handler to update
+			cVector3iArray Updates = CurrentHandler->Update(m_World, CurrentLocation, CurrentBlock, CurrentMeta, Power);
+			WorkQueue.insert(WorkQueue.end(), Updates.begin(), Updates.end());
+		}
 
 		if (IsAlwaysTicked(CurrentBlock))
 		{

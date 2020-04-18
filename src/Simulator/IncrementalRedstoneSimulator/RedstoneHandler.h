@@ -6,14 +6,16 @@
 
 
 
-
+// tolua_begin
 class cRedstoneHandler
+// tolua_end
 {
 public:
 
 	cRedstoneHandler() = default;
 	DISALLOW_COPY_AND_ASSIGN(cRedstoneHandler);
 
+	// tolua_begin
 	struct PoweringData
 	{
 	public:
@@ -53,6 +55,7 @@ public:
 			return !operator ==(a_Lhs, a_Rhs);
 		}
 	};
+	// tolua_end
 
 	virtual cVector3iArray Update(cWorld & a_World, Vector3i a_Position, BLOCKTYPE a_BlockType, NIBBLETYPE a_Meta, PoweringData a_PoweringData) const = 0;
 	virtual unsigned char GetPowerDeliveredToPosition(cWorld & a_World, Vector3i a_Position, BLOCKTYPE a_BlockType, NIBBLETYPE a_Meta, Vector3i a_QueryPosition, BLOCKTYPE a_QueryBlockType) const = 0;

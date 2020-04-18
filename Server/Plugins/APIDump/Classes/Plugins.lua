@@ -926,6 +926,10 @@ cPluginManager.AddHook(cPluginManager.HOOK_CHAT, OnChatMessage);
 			{
 				Notes = "Called when a {{cProjectileEntity|projectile}} hits an {{cEntity|entity}}.",
 			},
+			HOOK_REDSTONE_AT_BLOCK =
+			{
+				Notes = "Called when a block recieves a redstone signal.",
+			},
 			HOOK_SERVER_PING =
 			{
 				Notes = "Called when a client pings the server from the server list. Plugins may change the favicon, server description, players online and maximum players values.",

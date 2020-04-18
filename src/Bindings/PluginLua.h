@@ -122,6 +122,7 @@ public:
 	virtual bool OnPreCrafting              (cPlayer & a_Player, cCraftingGrid & a_Grid, cCraftingRecipe & a_Recipe) override;
 	virtual bool OnProjectileHitBlock       (cProjectileEntity & a_Projectile, int a_BlockX, int a_BlockY, int a_BlockZ, eBlockFace a_Face, const Vector3d & a_BlockHitPos) override;
 	virtual bool OnProjectileHitEntity      (cProjectileEntity & a_Projectile, cEntity & a_HitEntity) override;
+	virtual bool OnRedstoneToBlockAt        (cWorld & a_World, int a_BlockX, int a_BlockY, int a_BlockZ, BLOCKTYPE a_BlockType, NIBBLETYPE a_BlockMeta, cRedstoneHandler::PoweringData PowerData) override;
 	virtual bool OnServerPing               (cClientHandle & a_ClientHandle, AString & a_ServerDescription, int & a_OnlinePlayersCount, int & a_MaxPlayersCount, AString & a_Favicon) override;
 	virtual bool OnSpawnedEntity            (cWorld & a_World, cEntity & a_Entity) override;
 	virtual bool OnSpawnedMonster           (cWorld & a_World, cMonster & a_Monster) override;

@@ -5,6 +5,7 @@
 #include "../BlockType.h"
 #include "../Defines.h"
 #include "../FunctionRef.h"
+#include "../Simulator/IncrementalRedstoneSimulator/IncrementalRedstoneSimulator.h"
 
 
 
@@ -135,6 +136,7 @@ public:
 		HOOK_PRE_CRAFTING,
 		HOOK_PROJECTILE_HIT_BLOCK,
 		HOOK_PROJECTILE_HIT_ENTITY,
+		HOOK_REDSTONE_AT_BLOCK,
 		HOOK_SERVER_PING,
 		HOOK_SPAWNED_ENTITY,
 		HOOK_SPAWNED_MONSTER,
@@ -283,6 +285,7 @@ public:
 	bool CallHookPreCrafting              (cPlayer & a_Player, cCraftingGrid & a_Grid, cCraftingRecipe & a_Recipe);
 	bool CallHookProjectileHitBlock       (cProjectileEntity & a_Projectile, int a_BlockX, int a_BlockY, int a_BlockZ, eBlockFace a_Face, const Vector3d & a_BlockHitPos);
 	bool CallHookProjectileHitEntity      (cProjectileEntity & a_Projectile, cEntity & a_HitEntity);
+	bool CallHookRedstoneOnBlock          (cWorld & a_World, int a_BlockX, int a_BlockY, int a_BlockZ, BLOCKTYPE a_BlockType, NIBBLETYPE a_BlockMeta, cRedstoneHandler::PoweringData PowerData);
 	bool CallHookServerPing               (cClientHandle & a_ClientHandle, AString & a_ServerDescription, int & a_OnlinePlayersCount, int & a_MaxPlayersCount, AString & a_Favicon);
 	bool CallHookSpawnedEntity            (cWorld & a_World, cEntity & a_Entity);
 	bool CallHookSpawnedMonster           (cWorld & a_World, cMonster & a_Monster);

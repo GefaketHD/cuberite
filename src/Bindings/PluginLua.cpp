@@ -876,6 +876,15 @@ bool cPluginLua::OnProjectileHitEntity(cProjectileEntity & a_Projectile, cEntity
 
 
 
+bool cPluginLua::OnRedstoneToBlockAt(cWorld & a_World, int a_BlockX, int a_BlockY, int a_BlockZ, BLOCKTYPE a_BlockType, NIBBLETYPE a_BlockMeta, cRedstoneHandler::PoweringData PowerData)
+{
+	return CallSimpleHooks(cPluginManager::HOOK_REDSTONE_AT_BLOCK, &a_World, a_BlockX, a_BlockY, a_BlockZ, a_BlockType, a_BlockMeta, PowerData);
+}
+
+
+
+
+
 bool cPluginLua::OnServerPing(cClientHandle & a_ClientHandle, AString & a_ServerDescription, int & a_OnlinePlayersCount, int & a_MaxPlayersCount, AString & a_Favicon)
 {
 	cOperation op(*this);
